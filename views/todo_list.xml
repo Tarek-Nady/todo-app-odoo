@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--        tree view-->
+        <record model="ir.ui.view" id="owl_todo_tree_form_view">
+            <field name="name">owl.todo.tree.form.view</field>
+            <field name="model">todo.list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="color" widget="color"/>
+                    <field name="completed"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        form view-->
+        <record model="ir.ui.view" id="owl_todo_list_form_view">
+            <field name="name">owl.todo.tree.form.view</field>
+            <field name="model">todo.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color"/>
+                            <field name="completed"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        action-->
+        <record model="ir.actions.act_window" id="action_owl_todo_list">
+            <field name="name">Todo List</field>
+            <field name="res_model">todo.list</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record model="ir.actions.client" id="action_owl_todo_list_js">
+            <field name="name">Todo List OWL</field>
+            <field name="tag">todo_app_odoo.action_todo_list_js</field>
+        </record>
+    </data>
+<!--        menu item-->
+    <menuitem id="menu_owl_tutorial" sequence="10" name="Todo App">
+        <menuitem id="menu_owl_todo_list" name="Todo List" sequence="10" action="action_owl_todo_list"/>
+        <menuitem id="menu_owl_todo_list_js" name="Todo List App" sequence="10" action="action_owl_todo_list_js"/>
+    </menuitem>
+</odoo>
